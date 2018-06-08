@@ -33,7 +33,7 @@ var getMaxElement = function (arr) {
 };
 
 var getRandomColor = function (min, max) {
-  var random = Math.random() * (max - min) + min;
+  var random = Math.floor(Math.random() * (max - min + 1)) + min;
   return random;
 };
 
@@ -47,16 +47,15 @@ window.renderStatistics = function (ctx, players, times) {
   ctx.fillText('Ура вы победили!', CLOUD_X + GAP, CLOUD_Y + GAP);
   ctx.fillText('Список результатов: ', CLOUD_X + GAP, CLOUD_Y + GAP + FONT_GAP);
 
-  var randomNumber = getRandomColor(20, 100);
-  var random = 'hsl(' + 240 + ',' + 100 + '%' + ',' + randomNumber + '%)';
   var maxTime = getMaxElement(times);
 
   for (var i = 0; i < players.length; i++) {
+    var randomNumber = getRandomColor(20, 100);
+    var random = 'rgba(0,0,255,' + randomNumber / 100 + ')';
     ctx.fillStyle = BLACK;
     ctx.fillText(players[i], CLOUD_X + BAR_GAP + (TEXT_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - BAR_GAP + GAP * 2);
 
     ctx.fillStyle = players[i] === 'Вы' ? COLOR_MAIN_PLAYER : random;
     ctx.fillRect(CLOUD_X + BAR_GAP + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - BAR_GAP + BAR_HEIGHT - ((BAR_HEIGHT * times[i]) / maxTime) - BAR_HEIGHT, BAR_WIDTH, (BAR_HEIGHT * times[i]) / maxTime);
   }
-}
-;
+};
