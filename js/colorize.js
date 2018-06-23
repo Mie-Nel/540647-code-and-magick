@@ -7,7 +7,7 @@
     return arr[Math.floor(Math.random() * arr.length)];
   };
 
-  window.colorize = function (element, arr) {
+  var colorize = function (element, arr) {
     element.addEventListener('click', function () {
       var color = getRandomValue(arr);
       if (element.tagName === 'DIV') {
@@ -16,5 +16,9 @@
         element.setAttribute('style', 'fill: ' + color);
       }
     });
+  };
+
+  window.colorizeEvent = {
+    colorizeElement: colorize
   };
 })();

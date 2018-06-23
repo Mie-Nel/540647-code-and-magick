@@ -91,7 +91,7 @@
   var wizardEyes = setupWizard.querySelector('.wizard-eyes');
   var wizardFireball = document.querySelector('.setup-fireball-wrap');
 
-  window.colorize(wizardCoat, coatColors);
-  window.colorize(wizardEyes, eyesColors);
-  window.colorize(wizardFireball, fireballColors);
+  window.colorizeEvent.colorizeElement(wizardCoat, coatColors);
+  window.colorizeEvent.colorizeElement(wizardEyes, eyesColors);
+  window.colorizeEvent.colorizeElement(wizardFireball, fireballColors);
 })();
