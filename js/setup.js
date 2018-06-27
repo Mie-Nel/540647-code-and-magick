@@ -2,6 +2,7 @@
 
 (function () {
   var setup = document.querySelector('.setup');
+  var setupSimilar = document.querySelector('.setup-similar');
   var setupOpen = document.querySelector('.setup-open');
   var setupClose = setup.querySelector('.setup-close');
   var userNameInput = setup.querySelector('.setup-user-name');
@@ -63,4 +64,9 @@
       userNameInput.setCustomValidity('');
     }
   });
+
+  window.setupEvent = {
+    setup: setup,
+    setupSimilar: setupSimilar
+  };
 })();
