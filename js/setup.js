@@ -65,8 +65,15 @@
     }
   });
 
+  var form = document.querySelector('.setup-wizard-form');
+
+  form.addEventListener('submit', function (evt) {
+    window.backend.save(new FormData(form));
+    setup.classList.add('hidden');
+    evt.preventDefault();
+  });
+
   window.setupEvent = {
-    setup: setup,
     setupSimilar: setupSimilar
   };
 })();
