@@ -1,9 +1,10 @@
 'use strict';
 
 (function () {
-  var url = 'https://js.dump.academy/code-and-magick/data';
+  var urlGet = 'https://js.dump.academy/code-and-magick/data';
+  var urlPost = 'https://js.dump.academy/code-and-magick';
   var statusOk = 200;
-  var timeOut = 10000;
+  var timeOut = 1000;
 
 
   var serverError = function (onLoad, onError) {
@@ -31,13 +32,13 @@
 
   var load = function (onLoad, onError) {
     var xhr = serverError(onLoad, onError);
-    xhr.open('GET', url);
+    xhr.open('GET', urlGet);
     xhr.send();
   };
 
   var save = function (data, onLoad, onError) {
     var xhr = serverError(onLoad, onError);
-    xhr.open('POST', url);
+    xhr.open('POST', urlPost);
     xhr.send(data);
   };
 

@@ -10,27 +10,27 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  function onInputFocus() {
+  var onInputFocus = function () {
     userNameInput.focus();
     document.removeEventListener('keydown', onPopupEscPress);
-  }
+  };
 
-  function openPopup() {
+  var openPopup = function () {
     setup.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
     onInputFocus();
-  }
+  };
 
-  function closePopup() {
+  var closePopup = function () {
     setup.classList.add('hidden');
     document.removeEventListener('keydown', onPopupEscPress);
-  }
+  };
 
-  function onPopupEscPress(evt) {
+  var onPopupEscPress = function (evt) {
     if (evt.keyCode === ESC_KEYCODE) {
       closePopup();
     }
-  }
+  };
 
   setupOpen.addEventListener('click', function () {
     openPopup();
@@ -68,8 +68,9 @@
   var form = document.querySelector('.setup-wizard-form');
 
   form.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(form));
-    setup.classList.add('hidden');
+    window.backend.save(new FormData(form), function () {
+      setup.classList.add('hidden');
+    });
     evt.preventDefault();
   });
 
